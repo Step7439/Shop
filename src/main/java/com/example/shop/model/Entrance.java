@@ -15,7 +15,7 @@ public class Entrance {
     private long id;
     private long number;
     private String nameProduct;
-    //    @JsonIgnore
+
     @ManyToOne(cascade = CascadeType.ALL)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name = "warehouse_id")
