@@ -12,18 +12,19 @@ import java.util.List;
 
 @Entity
 @Data
-//@NoArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private final String warehouse;
+    private String warehouse;
     @OneToMany
     @JoinColumn(name = "warehouse_id")
-    private List<Entrance> entranceList = new ArrayList<>();
+    private List<Entrance> entranceList;
 
-    public Warehouse(String warehouse) {
+    public Warehouse(long id, String warehouse, List<Entrance> entranceList) {
+        this.id = id;
         this.warehouse = warehouse;
+        this.entranceList = entranceList;
     }
 }

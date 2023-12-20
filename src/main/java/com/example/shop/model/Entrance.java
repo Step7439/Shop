@@ -8,14 +8,14 @@ import org.hibernate.annotations.Cascade;
 
 @Entity
 @Data
-@AllArgsConstructor
-//@NoArgsConstructor
+//@AllArgsConstructor
+@NoArgsConstructor
 public class Entrance {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private final long number;
-    private final String nameProduct;
+    private long number;
+    private String nameProduct;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -23,6 +23,7 @@ public class Entrance {
     private Warehouse warehouse;
 
     public Entrance(long number, String nameProduct, Warehouse warehouse) {
+     //   this.id = id;
         this.number = number;
         this.nameProduct = nameProduct;
         this.warehouse = warehouse;
