@@ -12,17 +12,18 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
+//@NoArgsConstructor
+@AllArgsConstructor
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private String warehouse;
-    @OneToMany(mappedBy = "warehouse")
+    private final String warehouse;
+    @OneToMany
+    @JoinColumn(name = "warehouse_id")
     private List<Entrance> entranceList = new ArrayList<>();
 
     public Warehouse(String warehouse) {
         this.warehouse = warehouse;
     }
-
 }
